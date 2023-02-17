@@ -1,0 +1,41 @@
+.main_table{
+    box-shadow: 12px 14px 15px -18px rgba(0,0,0,0.38);
+-webkit-box-shadow: 12px 14px 15px -18px rgba(0,0,0,0.38);
+-moz-box-shadow: 12px 14px 15px -18px rgba(0,0,0,0.38);
+border: 1px solid lightgray;
+width: 90%;           
+margin: 0 auto;
+}
+.inputs{
+    border: 1px solid lightgray;
+    width: 90%;
+    padding: 0.5%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    box-shadow: 12px 14px 15px -18px rgba(0,0,0,0.38);
+-webkit-box-shadow: 12px 14px 15px -18px rgba(0,0,0,0.38);
+-moz-box-shadow: 12px 14px 15px -18px rgba(0,0,0,0.38);
+}
+.action{
+    width: 13%;
+}
+.action_btn{
+    width: 100%;
+}
+.head{
+    margin-top: 10px;
+    text-align: center;
+}
+.inputs_width{
+    width: 300px;
+}
+.inputs_width_modal{
+    width: 320px;
+}
+
+/* .dropdown-toggle::after {
+    display: none !important; 
+  } */

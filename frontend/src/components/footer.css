@@ -1,0 +1,13 @@
+.main-container{
+    margin-top: auto;
+}
+.inside-container-div{
+    height: 55px;
+    padding-top: 15px;
+}
+.para{
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: large;
+}
