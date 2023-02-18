@@ -24,7 +24,7 @@ const Login = () => {
         setLoading(true);
         const config = { headers: { "Content-Type": "application/json" } };
         const login_data = await axios.post(
-          "http://localhost:5000/api/user/login",
+          "https://fair-plum-ox-vest.cyclic.app/api/user/login",
           obj,
           config
         );

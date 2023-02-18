@@ -24,7 +24,7 @@ const Signup = () => {
         setLoading(true);
         const config = { headers: { "Content-Type": "application/json" } };
         const register_data = await axios.post(
-          "http://localhost:5000/api/user/register",
+          "https://fair-plum-ox-vest.cyclic.app/api/user/register",
           obj,
           config
         );

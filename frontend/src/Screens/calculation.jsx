@@ -68,7 +68,7 @@ const Calculation = () => {
         }
       },
     };
-    
+
     let new_obj = {
       consume_units: obj.consume_units,
       month: obj.current_month,
@@ -86,7 +86,7 @@ const Calculation = () => {
           },
         };
         const insert_calulation = await axios.post(
-          "http://localhost:5000/api/bill/userBill",
+          "https://fair-plum-ox-vest.cyclic.app/api/bill/userBill",
           new_obj,
           config
         );
@@ -188,7 +188,7 @@ const Calculation = () => {
         },
       };
       const insert_calulation = await axios.put(
-        "http://localhost:5000/api/bill/updateUserBill",
+        "https://fair-plum-ox-vest.cyclic.app/api/bill/updateUserBill",
         new_obj,
         config
       );
@@ -212,7 +212,7 @@ const Calculation = () => {
         },
       };
       const insert_calulation = await axios.get(
-        "http://localhost:5000/api/bill/getUserBill",
+        "https://fair-plum-ox-vest.cyclic.app/api/bill/getUserBill",
         config
       );
       //console.log("previous data==>", insert_calulation.data);
@@ -234,7 +234,7 @@ const Calculation = () => {
         },
       };
       const insert_calulation = await axios.delete(
-        "http://localhost:5000/api/bill/delUserBill",
+        "https://fair-plum-ox-vest.cyclic.app/api/bill/delUserBill",
         config
       );
       //console.log("deleted data==>", insert_calulation.data);
@@ -373,17 +373,12 @@ const Calculation = () => {
                       <td>
                         {i == 0
                           ? Math.abs(0 - (v.total_price / v.total_price) * 100)
-                          : arr[i].total_price - arr[i - 1].total_price > 0
-                          ? Math.round(
-                              ((arr[i].total_price - arr[i - 1].total_price) /
-                                arr[i].total_price) *
-                                100
-                            )
-                          : Math.round(
-                              (arr[i].total_price /
-                                (arr[i].total_price - arr[i - 1].total_price)) *
-                                100
-                            )}
+                          : 
+                              Math.round(((arr[i].total_price - arr[i - 1].total_price) /
+                                (arr[i].total_price)) *
+                                (100))
+                              }
+                          
                         %
                       </td>
                       <td>

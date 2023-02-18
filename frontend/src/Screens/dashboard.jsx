@@ -19,7 +19,7 @@ const Dashboard = () => {
     try {      
       const config = { headers: { "Content-Type": "application/json", Authorization: `Bearer ${tokenStorage.token}` } };
       const insert_calulation = await axios.get(
-          "http://localhost:5000/api/bill/getUserBill",          
+          "https://fair-plum-ox-vest.cyclic.app/api/bill/getUserBill",          
           config
           );
           console.log("previous data==>",insert_calulation.data);
