@@ -39,7 +39,7 @@ const Header = () => {
 
             <NavDropdown title={token.username} id="basic-nav-dropdown" style={{padding:"0.25%",color:"black",fontWeight:"bold"}}>
                 <NavDropdown.Item>
-                  <Link className="link" to="/12/dashboard">Dashboard</Link>
+                  <Link className="link" to="/dashboard">Dashboard</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link className="link" to="/calculation">Calculate bill</Link>

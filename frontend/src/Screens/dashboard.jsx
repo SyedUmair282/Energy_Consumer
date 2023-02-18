@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import { Form, Button, Table, Modal } from "react-bootstrap";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+import {  Table, Alert } from "react-bootstrap";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import axios from "axios";
 import Pic from "../assets/No_data.png"
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const tokenStorage = JSON.parse(localStorage.getItem("User"));
@@ -23,31 +23,29 @@ const Dashboard = () => {
           config
           );
           console.log("previous data==>",insert_calulation.data);
-           setPreviousData(insert_calulation.data)
-           
-          // setError(false);                                       
-         
-      
+           setPreviousData(insert_calulation.data)           
+            setError(false);                                               
     } catch (error) {
       console.log("error",error);   
-      //setError(true);
+      setError(true);
     }  
   }
-  let data=previousData;
-  
+
+  let data=previousData;  
   const ordersAndPricesByYear = data.reduce((acc, user) => {
     if (acc[user.year]) {
       acc[user.year].year=user.year
       acc[user.year].total_price += user.total_price;
       acc[user.year].consume_units += user.consume_units;
-    } else {
+    } 
+    else {
       acc[user.year] = { year:user.year,total_price: user.total_price, consume_units: user.consume_units };
     }
     return acc;
   }, {});
   let result=[ordersAndPricesByYear];
   
-  console.log(Object.values(result[0]));
+  //console.log(Object.values(result[0]));
 //console.log("check=>",data);
 //   const users = [
 //     { name: "test1", orders: 20 },
@@ -113,14 +111,13 @@ const Dashboard = () => {
   //   }
   //   else{
   //     data.push(previousData[i]);
-  //   }
-    
-    
+  //   }        
   // }
+  
 
   useEffect(() => {    
     if (!tokenStorage) {
-      //navigate("/");
+      navigate("/");
     }    
     getData()   
   }, []);
@@ -131,10 +128,15 @@ const Dashboard = () => {
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
       <Header />
       <div style={{ padding: "1%", paddingTop:"0.3%" }}>
-        {previousData.length > 0?
+   
         <div
           style={{ border: "0px solid black", width: "94%", margin: "0 auto" }}
         >
+          {error?
+          <Alert variant="danger">
+          Something went wrong!
+        </Alert>:null
+          }
           <h3 style={{ fontFamily: "sans-serif" }}>Dashboard</h3>
           
           <div
@@ -181,16 +183,16 @@ const Dashboard = () => {
               })}                     
             </tbody>
           </Table>: (<div style={{textAlign:"center",fontSize:"13px"}}>
-            <img className="img-fluid" src={Pic} alt="process" style={{height:"300px"}} />
+            <img className="img-fluid" src={Pic} alt="process" style={{height:"200px"}} />
             <p>No previous data</p>
           </div>)
           }
-
           </div>
           <br />
           {/* ******************************Graph************************************* */}
-          <div style={{border:"0px solid black"}}>
-            <BarChart width={1410} height={280} data={Object.values(result[0])} style={{marginLeft:"-25px"}} >
+          
+          <div style={{display:"flex",flexDirection:"row",justifyContent:"center"}}>
+            <BarChart width={1400} height={300} data={Object.values(result[0])}  >
               <XAxis dataKey="year" stroke="#8884d8" />
               <YAxis />
               <Tooltip />
@@ -199,9 +201,8 @@ const Dashboard = () => {
               <Bar dataKey="total_price" fill="#8884d8" barSize={30} />
             </BarChart>
           </div>
-        </div>:
-        <h3 style={{textAlign:"center"}}>No previous data</h3>
-}
+        
+        </div>
       </div>
       <Footer />
     </div>

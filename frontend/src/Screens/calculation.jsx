@@ -68,6 +68,7 @@ const Calculation = () => {
         }
       },
     };
+    
     let new_obj = {
       consume_units: obj.consume_units,
       month: obj.current_month,
@@ -214,7 +215,7 @@ const Calculation = () => {
         "http://localhost:5000/api/bill/getUserBill",
         config
       );
-      console.log("previous data==>", insert_calulation.data);
+      //console.log("previous data==>", insert_calulation.data);
       setPreviousData(insert_calulation.data);
       setError(false);
       setReload(false);
@@ -236,7 +237,7 @@ const Calculation = () => {
         "http://localhost:5000/api/bill/delUserBill",
         config
       );
-      console.log("deleted data==>", insert_calulation.data);
+      //console.log("deleted data==>", insert_calulation.data);
       setError(false);
       setReload(true);
     } catch (error) {
@@ -248,7 +249,7 @@ const Calculation = () => {
 
   useEffect(() => {
     if (!tokenStorage) {
-      //navigate("/");
+      navigate("/");
     }
     getPrevious_data();
   }, [reload]);
